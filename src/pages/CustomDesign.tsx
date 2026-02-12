@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, Sparkles, Check } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useCart } from "@/context/CartContext";
 import { toast } from "sonner";
 
 const phoneBrands = ["Apple", "Samsung", "OnePlus", "Xiaomi", "Realme", "Oppo", "Vivo", "Google"];
@@ -20,6 +22,8 @@ const phoneColors = ["Black", "White", "Green", "Pink", "Blue", "Red", "Gold", "
 const vibes = ["Cute", "Dark", "Aesthetic", "Minimal", "Bold", "Emotional", "Funny"];
 
 const CustomDesign = () => {
+  const { addCustomItem } = useCart();
+  const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
@@ -42,17 +46,17 @@ const CustomDesign = () => {
   };
 
   const handleSubmit = () => {
-    toast.success("Your surprise cover order has been submitted! 🎉", {
-      description: "We'll start designing your masterpiece right away.",
+    addCustomItem({
+      type: "custom",
+      brand,
+      model,
+      color,
+      theme,
+      vibes: selectedVibes,
+      price: 500,
     });
-    // Reset
-    setStep(0);
-    setBrand("");
-    setModel("");
-    setColor("");
-    setTheme("");
-    setSelectedVibes([]);
-    setAgreed(false);
+    toast.success("Surprise cover added to cart! 🎉");
+    navigate("/cart");
   };
 
   const stepTitles = ["Phone Details", "Your Theme", "Select Vibe", "Confirm"];
