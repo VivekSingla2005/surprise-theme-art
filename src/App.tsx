@@ -18,6 +18,7 @@ import ManageOrders from "./pages/admin/ManageOrders";
 import CustomRequests from "./pages/admin/CustomRequests";
 import Customers from "./pages/admin/Customers";
 import AdminSettings from "./pages/admin/AdminSettings";
+import Reveal from "./pages/Reveal";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/order-confirmed" element={<OrderConfirmed />} />
+            <Route path="/reveal" element={<Reveal />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="designs" element={<ManageDesigns />} />
