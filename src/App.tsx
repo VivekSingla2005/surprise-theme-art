@@ -11,6 +11,13 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import OrderConfirmed from "./pages/OrderConfirmed";
 import NotFound from "./pages/NotFound";
+import AdminLayout from "./layouts/AdminLayout";
+import Dashboard from "./pages/admin/Dashboard";
+import ManageDesigns from "./pages/admin/ManageDesigns";
+import ManageOrders from "./pages/admin/ManageOrders";
+import CustomRequests from "./pages/admin/CustomRequests";
+import Customers from "./pages/admin/Customers";
+import AdminSettings from "./pages/admin/AdminSettings";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +35,14 @@ const App = () => (
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/order-confirmed" element={<OrderConfirmed />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="designs" element={<ManageDesigns />} />
+              <Route path="orders" element={<ManageOrders />} />
+              <Route path="custom-requests" element={<CustomRequests />} />
+              <Route path="customers" element={<Customers />} />
+              <Route path="settings" element={<AdminSettings />} />
+            </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
         </CartProvider>
