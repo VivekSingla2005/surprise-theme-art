@@ -152,7 +152,7 @@ const Reveal = () => {
   const scale = stage === "revealing" ? 0.6 + 0.4 * revealProgress : 1;
 
   return (
-    <div className="fixed inset-0 z-50 bg-[hsl(0_0%_5%)] overflow-hidden select-none">
+    <div className="fixed inset-0 z-50 bg-background overflow-hidden select-none">
       {/* Sound toggle */}
       <motion.button
         className="absolute top-6 right-6 z-50 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
