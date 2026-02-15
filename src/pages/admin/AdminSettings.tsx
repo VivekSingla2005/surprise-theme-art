@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
 const AdminSettings = () => {
-  const [storeName, setStoreName] = useState("CoverCraft");
+  const [storeName, setStoreName] = useState("Riham Creates");
   const [defaultPrice, setDefaultPrice] = useState("500");
   const [expressCharge, setExpressCharge] = useState("100");
   const [premiumCharge, setPremiumCharge] = useState("600");

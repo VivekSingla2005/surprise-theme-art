@@ -409,7 +409,7 @@ const Reveal = () => {
                 Design ID: #SC-2031 🏷️
               </p>
               <p className="font-display text-sm tracking-wide text-foreground/50 mt-2">
-                crafted with love by CaseCraft Artist 💕
+                crafted with love by Riham Creates 💕
               </p>
               <p className="font-body text-xs text-muted-foreground/60 mt-1">
                 Created on {new Date().toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}

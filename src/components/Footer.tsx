@@ -7,14 +7,14 @@ const Footer = () => (
         <div className="flex items-center gap-2">
           <Sparkles className="h-5 w-5 text-primary" />
           <span className="font-display text-lg font-bold text-foreground">
-            Cover<span className="text-gradient">Craft</span>
+            Riham <span className="text-gradient">Creates</span>
           </span>
         </div>
         <p className="text-sm text-muted-foreground">
           You imagine. We surprise. Premium custom phone covers crafted with love.
         </p>
         <p className="text-xs text-muted-foreground/60">
-          © 2026 CoverCraft. All rights reserved.
+          © 2026 Riham Creates. All rights reserved.
         </p>
       </div>
     </div>
