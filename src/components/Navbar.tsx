@@ -25,7 +25,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-2">
           <Sparkles className="h-6 w-6 text-primary" />
           <span className="font-display text-xl font-bold text-foreground">
-            Cover<span className="text-gradient">Craft</span>
+            Riham <span className="text-gradient">Creates</span>
           </span>
         </Link>
 

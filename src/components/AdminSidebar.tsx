@@ -18,7 +18,7 @@ const AdminSidebar = () => {
       <div className="flex items-center gap-2 border-b border-border px-6 py-5">
         <Sparkles className="h-5 w-5 text-primary" />
         <span className="font-display text-lg font-bold text-foreground">
-          Cover<span className="text-gradient">Craft</span>
+          Riham <span className="text-gradient">Creates</span>
         </span>
         <span className="ml-1 rounded bg-primary/20 px-1.5 py-0.5 text-[10px] font-semibold text-primary">
           Admin
