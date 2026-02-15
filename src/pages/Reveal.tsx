@@ -7,20 +7,21 @@ import designGalaxy from "@/assets/design-galaxy.png";
 type Stage = "entry" | "suspense" | "revealing" | "final";
 
 const TEXTS_SUSPENSE = [
-  "You trusted us with your idea…",
-  "Our artist brought it to life.",
-  "This is yours.",
+  "You trusted us with your idea… 💭",
+  "Our artist poured their heart into it 🎨",
+  "And now… it's all yours 💖",
 ];
 
 // Particle component for ambient effect
 const Particles = () => {
-  const particles = Array.from({ length: 40 }, (_, i) => ({
+  const particles = Array.from({ length: 30 }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
+    size: Math.random() * 5 + 3,
     duration: Math.random() * 8 + 6,
     delay: Math.random() * 4,
+    emoji: ["✨", "💫", "🌸", "💖", "⭐"][i % 5],
   }));
 
   return (
@@ -28,18 +29,17 @@ const Particles = () => {
       {particles.map((p) => (
         <motion.div
           key={p.id}
-          className="absolute rounded-full"
+          className="absolute text-center"
           style={{
-            width: p.size,
-            height: p.size,
+            fontSize: p.size * 3,
             left: `${p.x}%`,
             top: `${p.y}%`,
-            background: `hsl(var(--primary) / 0.4)`,
           }}
           animate={{
-            y: [0, -60, 0],
-            x: [0, Math.random() * 30 - 15, 0],
-            opacity: [0, 0.8, 0],
+            y: [0, -40, 0],
+            x: [0, Math.random() * 20 - 10, 0],
+            opacity: [0, 0.7, 0],
+            rotate: [0, 20, -20, 0],
           }}
           transition={{
             duration: p.duration,
@@ -47,7 +47,9 @@ const Particles = () => {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-        />
+        >
+          {p.emoji}
+        </motion.div>
       ))}
     </div>
   );
@@ -55,19 +57,13 @@ const Particles = () => {
 
 // Confetti burst
 const Confetti = () => {
-  const pieces = Array.from({ length: 50 }, (_, i) => ({
+  const pieces = Array.from({ length: 40 }, (_, i) => ({
     id: i,
-    color: [
-      "hsl(var(--primary))",
-      "hsl(var(--accent))",
-      "hsl(var(--foreground))",
-      "hsl(12 80% 70%)",
-      "hsl(30 70% 65%)",
-    ][i % 5],
+    emoji: ["🎉", "💖", "✨", "🌟", "🎀", "💫", "🩷", "🌸"][i % 8],
     x: Math.random() * 200 - 100,
     y: -(Math.random() * 400 + 100),
     rotation: Math.random() * 720 - 360,
-    size: Math.random() * 8 + 4,
+    size: Math.random() * 16 + 12,
   }));
 
   return (
@@ -76,12 +72,7 @@ const Confetti = () => {
         <motion.div
           key={p.id}
           className="absolute left-1/2 top-1/2"
-          style={{
-            width: p.size,
-            height: p.size * 0.6,
-            backgroundColor: p.color,
-            borderRadius: 2,
-          }}
+          style={{ fontSize: p.size }}
           initial={{ x: 0, y: 0, rotate: 0, opacity: 1 }}
           animate={{
             x: p.x,
@@ -90,7 +81,9 @@ const Confetti = () => {
             opacity: [1, 1, 0],
           }}
           transition={{ duration: 2.5, ease: "easeOut" }}
-        />
+        >
+          {p.emoji}
+        </motion.div>
       ))}
     </div>
   );
@@ -208,13 +201,13 @@ const Reveal = () => {
               {entryStep >= 1 && entryStep < 3 && (
                 <motion.p
                   key="ready-text"
-                  className="font-display text-2xl md:text-4xl tracking-[0.2em] text-foreground/90 text-center"
+                  className="font-display text-2xl md:text-4xl tracking-wide text-foreground/90 text-center"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 1.2, ease: "easeOut" }}
                 >
-                  Your custom design is ready.
+                  Your custom design is ready ✨
                 </motion.p>
               )}
             </AnimatePresence>
@@ -223,12 +216,12 @@ const Reveal = () => {
               {entryStep >= 2 && (
                 <motion.p
                   key="breath-text"
-                  className="font-body text-lg md:text-xl tracking-[0.3em] text-muted-foreground mt-6"
+                  className="font-body text-lg md:text-xl tracking-widest text-muted-foreground mt-6"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: [0, 0.7, 0.7] }}
                   transition={{ duration: 2, ease: "easeInOut" }}
                 >
-                  Take a breath.
+                  Take a deep breath 🌿
                 </motion.p>
               )}
             </AnimatePresence>
@@ -244,10 +237,10 @@ const Reveal = () => {
                 >
                   <Button
                     onClick={() => setStage("suspense")}
-                    className="px-10 py-6 text-lg tracking-[0.15em] font-display bg-white/5 border border-white/10 text-foreground hover:bg-white/10 hover:border-primary/40 transition-all duration-500 rounded-full"
+                    className="px-10 py-6 text-lg tracking-wider font-display bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 hover:border-primary/50 transition-all duration-500 rounded-full shadow-glow"
                     variant="ghost"
                   >
-                    Begin Reveal
+                    🎁 Begin Reveal
                   </Button>
                 </motion.div>
               )}
@@ -272,10 +265,10 @@ const Reveal = () => {
                     suspenseStep === i + 1 && (
                       <motion.p
                         key={text}
-                        className="font-display text-xl md:text-3xl tracking-[0.15em] text-foreground/80 text-center italic"
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
+                        className="font-display text-xl md:text-3xl tracking-wide text-foreground/80 text-center"
+                        initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
                         transition={{ duration: 1, ease: "easeOut" }}
                       >
                         {text}
@@ -304,10 +297,10 @@ const Reveal = () => {
                     />
                     <Button
                       onClick={() => setStage("revealing")}
-                      className="px-12 py-6 text-lg tracking-[0.2em] font-display bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 transition-all duration-500 rounded-full shadow-glow"
+                      className="px-12 py-6 text-lg tracking-wider font-display bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 transition-all duration-500 rounded-full shadow-glow"
                       variant="ghost"
                     >
-                      Reveal Now
+                      ✨ Reveal Now
                     </Button>
                   </div>
                 </motion.div>
@@ -359,7 +352,7 @@ const Reveal = () => {
               <img
                 src={designGalaxy}
                 alt="Your custom design"
-                className="w-64 md:w-80 h-auto rounded-3xl shadow-2xl"
+                className="w-64 md:w-80 h-auto rounded-[2rem] shadow-2xl border-4 border-primary/10"
                 style={{ perspective: "1000px" }}
               />
             </motion.div>
@@ -396,12 +389,12 @@ const Reveal = () => {
               <motion.img
                 src={designGalaxy}
                 alt="Your custom design"
-                className="w-64 md:w-80 h-auto rounded-3xl"
+                className="w-64 md:w-80 h-auto rounded-[2rem] border-4 border-primary/10"
                 style={{
-                  boxShadow: "0 0 80px -20px hsl(var(--primary) / 0.4), 0 20px 60px -20px hsl(0 0% 0% / 0.6)",
+                  boxShadow: "0 0 80px -20px hsl(var(--primary) / 0.25), 0 20px 60px -20px hsl(0 0% 0% / 0.15)",
                 }}
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               />
             </motion.div>
 
@@ -412,11 +405,11 @@ const Reveal = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              <p className="font-body text-xs tracking-[0.4em] uppercase text-muted-foreground">
-                Design ID: #SC-2031
+              <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground">
+                Design ID: #SC-2031 🏷️
               </p>
-              <p className="font-display text-sm tracking-[0.2em] text-foreground/50 mt-2 italic">
-                by CaseCraft Artist
+              <p className="font-display text-sm tracking-wide text-foreground/50 mt-2">
+                crafted with love by CaseCraft Artist 💕
               </p>
               <p className="font-body text-xs text-muted-foreground/60 mt-1">
                 Created on {new Date().toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
@@ -431,24 +424,24 @@ const Reveal = () => {
               transition={{ delay: 1.2, duration: 0.8 }}
             >
               <Button
-                className="px-8 py-5 font-display tracking-[0.1em] bg-primary text-primary-foreground hover:bg-primary/90 rounded-full"
+                className="px-8 py-5 font-display tracking-wide bg-primary text-primary-foreground hover:bg-primary/90 rounded-full"
               >
                 <Download className="w-4 h-4 mr-2" />
-                Download Image
+                Download 📥
               </Button>
               <Button
                 variant="ghost"
-                className="px-8 py-5 font-display tracking-[0.1em] border border-white/10 text-foreground hover:bg-white/5 rounded-full"
+                className="px-8 py-5 font-display tracking-wide border border-border text-foreground hover:bg-muted rounded-full"
               >
                 <Share2 className="w-4 h-4 mr-2" />
-                Share Reveal
+                Share 💌
               </Button>
               <Button
                 variant="ghost"
-                className="px-8 py-5 font-display tracking-[0.1em] border border-white/10 text-foreground hover:bg-white/5 rounded-full"
+                className="px-8 py-5 font-display tracking-wide border border-border text-foreground hover:bg-muted rounded-full"
               >
                 <RotateCcw className="w-4 h-4 mr-2" />
-                Order Again
+                Order Again 🔄
               </Button>
             </motion.div>
           </motion.div>
