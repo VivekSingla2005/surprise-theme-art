@@ -81,7 +81,7 @@ const ManageOrders = () => {
             className="pl-9"
           />
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {allStatuses.map((s) => (
             <button
               key={s}
