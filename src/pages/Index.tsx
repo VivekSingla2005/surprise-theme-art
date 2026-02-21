@@ -50,7 +50,7 @@ const Index = () => {
             <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
               Custom & Surprise Covers
             </p>
-            <h1 className="font-display text-5xl font-black leading-tight text-foreground md:text-7xl">
+            <h1 className="font-display text-3xl font-black leading-tight text-foreground sm:text-5xl md:text-7xl">
               Your Phone.
               <br />
               <span className="text-gradient">Your Theme.</span>
@@ -82,7 +82,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="relative hidden lg:block"
+            className="relative mx-auto max-w-xs lg:max-w-none"
           >
             <img
               src={heroImage}
@@ -102,7 +102,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="mb-16 text-center"
           >
-            <h2 className="font-display text-4xl font-bold text-foreground">
+            <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl">
               How It <span className="text-gradient">Works</span>
             </h2>
             <p className="mt-3 text-muted-foreground">Three simple steps to your dream cover</p>
@@ -131,16 +131,16 @@ const Index = () => {
       {/* Featured */}
       <section className="border-t border-border py-24">
         <div className="container mx-auto px-6">
-          <div className="mb-12 flex items-end justify-between">
+          <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h2 className="font-display text-4xl font-bold text-foreground">
+              <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl">
                 Featured <span className="text-gradient">Designs</span>
               </h2>
               <p className="mt-2 text-muted-foreground">Hand-picked favourites from our collection</p>
             </div>
             <Link
               to="/designs"
-              className="hidden items-center gap-1 text-sm font-medium text-primary transition-colors hover:underline md:flex"
+              className="inline-flex items-center gap-1 text-sm font-medium text-primary transition-colors hover:underline"
             >
               View All <ChevronRight className="h-4 w-4" />
             </Link>
@@ -162,7 +162,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="mb-12 text-center"
           >
-            <h2 className="font-display text-4xl font-bold text-foreground">
+            <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl">
               Loved by <span className="text-gradient">500+</span> Customers
             </h2>
           </motion.div>
@@ -196,10 +196,10 @@ const Index = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="mx-auto max-w-2xl rounded-2xl border border-primary/20 bg-card p-12 shadow-glow"
+            className="mx-auto max-w-2xl rounded-2xl border border-primary/20 bg-card p-6 sm:p-12 shadow-glow"
           >
             <Sparkles className="mx-auto mb-4 h-10 w-10 text-primary" />
-            <h2 className="font-display text-3xl font-bold text-foreground">
+            <h2 className="font-display text-2xl font-bold text-foreground sm:text-3xl">
               Ready for Your <span className="text-gradient">Surprise</span>?
             </h2>
             <p className="mt-3 text-muted-foreground">
